@@ -1,0 +1,132 @@
+[gd_scene load_steps=17 format=3 uid="uid://so3djj3ahdwm"]
+
+[ext_resource type="PackedScene" uid="uid://55p424tg2y50" path="res://Scenes/bat.tscn" id="1_drcbv"]
+[ext_resource type="Texture2D" uid="uid://k464xkjen6w" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Actor/Boss/TenguBlue/Walk.png" id="2_dfl8o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4tqn"]
+atlas = ExtResource("2_dfl8o")
+region = Rect2(0, 0, 82, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgbwm"]
+atlas = ExtResource("2_dfl8o")
+region = Rect2(82, 0, 82, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6a2e"]
+atlas = ExtResource("2_dfl8o")
+region = Rect2(164, 0, 82, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ahnq"]
+atlas = ExtResource("2_dfl8o")
+region = Rect2(246, 0, 82, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l31ms"]
+atlas = ExtResource("2_dfl8o")
+region = Rect2(328, 0, 82, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di5pi"]
+atlas = ExtResource("2_dfl8o")
+region = Rect2(410, 0, 82, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2wc3"]
+atlas = ExtResource("2_dfl8o")
+region = Rect2(492, 0, 82, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s51qw"]
+atlas = ExtResource("2_dfl8o")
+region = Rect2(574, 0, 82, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38pb2"]
+atlas = ExtResource("2_dfl8o")
+region = Rect2(656, 0, 82, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_680se"]
+atlas = ExtResource("2_dfl8o")
+region = Rect2(738, 0, 82, 61)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6qul"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4tqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgbwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6a2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ahnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l31ms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di5pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2wc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s51qw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38pb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_680se")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ymcmf"]
+radius = 14.0357
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4yjyo"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5owj5"]
+radius = 18.0278
+
+[node name="Tengu" instance=ExtResource("1_drcbv")]
+position = Vector2(0, 0)
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(-1.32349e-23, 12)
+scale = Vector2(1.07439, 1.0582)
+sprite_frames = SubResource("SpriteFrames_h6qul")
+frame_progress = 0.0
+
+[node name="Sprite2D" parent="." index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(-1, 22)
+shape = SubResource("CircleShape2D_ymcmf")
+
+[node name="CollisionShape2D2" parent="HurtBox" index="1"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_4yjyo")
+
+[node name="Stats" parent="." index="4"]
+totalHealth = 1500
+attackDmg = 40
+exp_value = 500
+currentHealth = 1500
+
+[node name="HitBox" parent="." index="6"]
+position = Vector2(0, 18)
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_5owj5")
+
+[node name="SoftCollision" parent="." index="7"]
+position = Vector2(0, 24)
+
+[editable path="EnemyDetectionZone"]
+[editable path="HitBox"]
+[editable path="SoftCollision"]

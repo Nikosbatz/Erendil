@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://bolnuqdqhe8aa"]
+
+[ext_resource type="Script" path="res://Scenes/spell.gd" id="1_fhy05"]
+[ext_resource type="Texture2D" uid="uid://dwdamuma7d8pv" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/FX/Projectile/IceSpike.png" id="1_oe0jr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nd04"]
+atlas = ExtResource("1_oe0jr")
+region = Rect2(0, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2gwi"]
+atlas = ExtResource("1_oe0jr")
+region = Rect2(18, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufg04"]
+atlas = ExtResource("1_oe0jr")
+region = Rect2(36, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flyb2"]
+atlas = ExtResource("1_oe0jr")
+region = Rect2(54, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ih80"]
+atlas = ExtResource("1_oe0jr")
+region = Rect2(72, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoh7w"]
+atlas = ExtResource("1_oe0jr")
+region = Rect2(90, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86pu2"]
+atlas = ExtResource("1_oe0jr")
+region = Rect2(108, 0, 18, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cosdc"]
+atlas = ExtResource("1_oe0jr")
+region = Rect2(126, 0, 18, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7f3p7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nd04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2gwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufg04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flyb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ih80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoh7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86pu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cosdc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_46o4o"]
+radius = 8.0
+height = 26.0
+
+[node name="IceSpike" type="Area2D"]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_fhy05")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_7f3p7")
+autoplay = "default"
+frame = 4
+frame_progress = 0.0739711
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_46o4o")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

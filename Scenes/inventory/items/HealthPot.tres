@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Inventory_item" load_steps=3 format=3 uid="uid://dpgop7kljkhl5"]
+
+[ext_resource type="Script" path="res://Scenes/inventory/inventory_item.gd" id="1_n216g"]
+[ext_resource type="Texture2D" uid="uid://b2byjmmgb8hng" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Items/Potion/LifePot.png" id="2_bov5n"]
+
+[resource]
+script = ExtResource("1_n216g")
+name = "HealthPot"
+texture = ExtResource("2_bov5n")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://rd03aehfxc25"]
+
+[ext_resource type="Script" path="res://Scenes/ui.gd" id="1_e0kdv"]
+[ext_resource type="Texture2D" uid="uid://du05grcijttqg" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Ui/LifeBarMiniUnder.png" id="1_w35cb"]
+[ext_resource type="Texture2D" uid="uid://bxptcopbsdk1j" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Ui/LifeBarMiniProgress.png" id="2_lyej6"]
+[ext_resource type="PackedScene" uid="uid://bh2vhj127bqql" path="res://Scenes/inventory/inventory_gui.tscn" id="4_cvhg6"]
+[ext_resource type="FontFile" uid="uid://cloy2sjbilmno" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Ui/Font/NormalFont.ttf" id="4_xi6kk"]
+
+[node name="UI" type="CanvasLayer" groups=["ui"]]
+script = ExtResource("1_e0kdv")
+
+[node name="EmptyBarContainer" type="MarginContainer" parent="."]
+offset_left = 18.0
+offset_top = 11.0
+offset_right = 138.0
+offset_bottom = 29.0
+
+[node name="EmptyBar" type="TextureRect" parent="EmptyBarContainer"]
+layout_mode = 2
+texture = ExtResource("1_w35cb")
+
+[node name="HealthBarContainer" type="MarginContainer" parent="."]
+offset_left = 18.0
+offset_top = 11.0
+offset_right = 138.0
+offset_bottom = 32.0
+
+[node name="HealthBar" type="TextureRect" parent="HealthBarContainer"]
+layout_mode = 2
+tooltip_text = "180/180"
+texture = ExtResource("2_lyej6")
+expand_mode = 1
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = 41.0
+offset_top = 9.0
+offset_right = 114.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("4_xi6kk")
+text = "100/100"
+
+[node name="InventoryGUI" parent="." instance=ExtResource("4_cvhg6")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -99.5
+offset_right = 140.0
+offset_bottom = 99.5
+grow_horizontal = 2
+grow_vertical = 2

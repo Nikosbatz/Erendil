@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://bc54hptekfrqf"]
+
+[ext_resource type="Texture2D" uid="uid://2fojpwjn4dec" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Ui/Theme/Wip/ThemeDark/nine_path_panel.png" id="1_f67w7"]
+[ext_resource type="Script" path="res://Scenes/skillBar/skill_bar.gd" id="2_2p4tg"]
+[ext_resource type="PackedScene" uid="uid://bf23kij8kn7yr" path="res://Scenes/skillBar/skill_slot.tscn" id="2_hb4vb"]
+[ext_resource type="Texture2D" uid="uid://bufqj6mrohwjv" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Ui/Icon/Spell/WaterCanonDisabled.png" id="4_ux802"]
+[ext_resource type="Texture2D" uid="uid://dqopmt3l2tbjq" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Ui/Icon/Spell/WaterCanon.png" id="5_t80lk"]
+[ext_resource type="Texture2D" uid="uid://dncq41i470x0k" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Ui/Icon/Spell/FireballDisabled.png" id="6_jq8c7"]
+[ext_resource type="Texture2D" uid="uid://b0i8wlvkdgw8f" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Ui/Icon/Spell/Fireball.png" id="7_tgslf"]
+[ext_resource type="Texture2D" uid="uid://6bu43hsmtkya" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Ui/Icon/Spell/UpgradeDisabled.png" id="8_wek7s"]
+[ext_resource type="Texture2D" uid="uid://c24ppv6hbph8k" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Ui/Icon/Spell/Upgrade.png" id="9_4uhpf"]
+
+[node name="SkillBar" type="NinePatchRect"]
+offset_top = 5.0
+offset_right = 418.0
+offset_bottom = 70.0
+texture = ExtResource("1_f67w7")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+script = ExtResource("2_2p4tg")
+
+[node name="SkillBarSlots" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -31.5
+offset_right = 260.0
+offset_bottom = 31.5
+grow_vertical = 2
+alignment = 1
+
+[node name="IceSpike" parent="SkillBarSlots" instance=ExtResource("2_hb4vb")]
+layout_mode = 2
+flat = true
+
+[node name="Item" parent="SkillBarSlots/IceSpike/CenterContainer/Panel" index="0"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_ux802")
+
+[node name="unlocked_skill" parent="SkillBarSlots/IceSpike/CenterContainer/Panel" index="1"]
+scale = Vector2(2, 2)
+texture = ExtResource("5_t80lk")
+
+[node name="Fireball" parent="SkillBarSlots" instance=ExtResource("2_hb4vb")]
+layout_mode = 2
+
+[node name="Item" parent="SkillBarSlots/Fireball/CenterContainer/Panel" index="0"]
+scale = Vector2(2, 2)
+texture = ExtResource("6_jq8c7")
+
+[node name="unlocked_skill" parent="SkillBarSlots/Fireball/CenterContainer/Panel" index="1"]
+scale = Vector2(2, 2)
+texture = ExtResource("7_tgslf")
+
+[node name="AttackBuff" parent="SkillBarSlots" instance=ExtResource("2_hb4vb")]
+layout_mode = 2
+
+[node name="Item" parent="SkillBarSlots/AttackBuff/CenterContainer/Panel" index="0"]
+scale = Vector2(2, 2)
+texture = ExtResource("8_wek7s")
+
+[node name="unlocked_skill" parent="SkillBarSlots/AttackBuff/CenterContainer/Panel" index="1"]
+scale = Vector2(2, 2)
+texture = ExtResource("9_4uhpf")
+
+[node name="SkillSlot4" parent="SkillBarSlots" instance=ExtResource("2_hb4vb")]
+layout_mode = 2
+
+[node name="HotBarSlots" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -30.0
+offset_bottom = 30.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SkillSlot5" parent="HotBarSlots" instance=ExtResource("2_hb4vb")]
+layout_mode = 2
+
+[node name="SkillSlot6" parent="HotBarSlots" instance=ExtResource("2_hb4vb")]
+layout_mode = 2
+
+[editable path="SkillBarSlots/IceSpike"]
+[editable path="SkillBarSlots/Fireball"]
+[editable path="SkillBarSlots/AttackBuff"]

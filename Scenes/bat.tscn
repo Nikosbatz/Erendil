@@ -1,0 +1,131 @@
+[gd_scene load_steps=19 format=3 uid="uid://55p424tg2y50"]
+
+[ext_resource type="Script" path="res://Scenes/bat.gd" id="1_tldqk"]
+[ext_resource type="Texture2D" uid="uid://oglw3dlcmeji" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Actor/Monsters/BlueBat/SpriteSheet.png" id="1_u5g0c"]
+[ext_resource type="Texture2D" uid="uid://dcfmjq705jq2" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Actor/Characters/Shadow.png" id="2_hxm83"]
+[ext_resource type="PackedScene" uid="uid://bad1rl67rq1oa" path="res://Scenes/Stats.tscn" id="4_7hehp"]
+[ext_resource type="PackedScene" uid="uid://dk4kl3n37nfm2" path="res://Scenes/hurt_box.tscn" id="4_qq0sf"]
+[ext_resource type="PackedScene" uid="uid://bdivifx576i2d" path="res://Scenes/enemy_detection_zone.tscn" id="6_w1ee7"]
+[ext_resource type="PackedScene" uid="uid://b3gemx85u76js" path="res://Scenes/hit_box.tscn" id="7_aki3e"]
+[ext_resource type="PackedScene" uid="uid://dk5rkvpjmjoya" path="res://Scenes/soft_collision.tscn" id="8_lpd47"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mbyq"]
+atlas = ExtResource("1_u5g0c")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0dxi"]
+atlas = ExtResource("1_u5g0c")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ls2p"]
+atlas = ExtResource("1_u5g0c")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqhxb"]
+atlas = ExtResource("1_u5g0c")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1rx5k"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mbyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0dxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ls2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqhxb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8i1ut"]
+radius = 8.0
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k4vb2"]
+radius = 7.0
+height = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctw3o"]
+radius = 104.389
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s8pqt"]
+height = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k4nvf"]
+radius = 12.0416
+
+[node name="Bat" type="CharacterBody2D"]
+position = Vector2(0, -1)
+collision_layer = 0
+script = ExtResource("1_tldqk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 10)
+scale = Vector2(1.1, 1.1)
+sprite_frames = SubResource("SpriteFrames_1rx5k")
+autoplay = "default"
+frame_progress = 0.588017
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 24)
+texture = ExtResource("2_hxm83")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_8i1ut")
+
+[node name="HurtBox" parent="." instance=ExtResource("4_qq0sf")]
+position = Vector2(0, 27)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -17)
+shape = SubResource("CapsuleShape2D_k4vb2")
+
+[node name="Stats" parent="." instance=ExtResource("4_7hehp")]
+attackDmg = 10
+exp_value = 30
+currentHealth = 100
+
+[node name="EnemyDetectionZone" parent="." instance=ExtResource("6_w1ee7")]
+position = Vector2(0, 23)
+
+[node name="CollisionShape2D" parent="EnemyDetectionZone" index="0"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_ctw3o")
+
+[node name="HitBox" parent="." instance=ExtResource("7_aki3e")]
+position = Vector2(0, 21)
+collision_layer = 32
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_s8pqt")
+
+[node name="SoftCollision" parent="." instance=ExtResource("8_lpd47")]
+position = Vector2(0, 20)
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_k4nvf")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="zero_health" from="Stats" to="." method="_on_stats_zero_health"]
+[connection signal="area_entered" from="HitBox" to="HitBox" method="_on_area_entered"]
+
+[editable path="EnemyDetectionZone"]
+[editable path="HitBox"]
+[editable path="SoftCollision"]

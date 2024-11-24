@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh763pvad8c4c"]
+
+[ext_resource type="FontFile" uid="uid://cloy2sjbilmno" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Ui/Font/NormalFont.ttf" id="1_mbub0"]
+
+[node name="PlayerLevelLabel" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_mbub0")
+text = "Level: "
+
+[node name="Label2" type="Label" parent="Label"]
+layout_mode = 1
+offset_left = 60.0
+offset_right = 100.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("1_mbub0")
+text = "1"

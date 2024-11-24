@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfil76ulj8cji"]
+
+[ext_resource type="PackedScene" uid="uid://55p424tg2y50" path="res://Scenes/bat.tscn" id="1_feopc"]
+[ext_resource type="Texture2D" uid="uid://jgt27v6j007g" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Actor/Monsters/AxolotBlue/SpriteSheet.png" id="2_l027w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3vg3"]
+atlas = ExtResource("2_l027w")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75kio"]
+atlas = ExtResource("2_l027w")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te0ls"]
+atlas = ExtResource("2_l027w")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc1jy"]
+atlas = ExtResource("2_l027w")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_spxra"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3vg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75kio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te0ls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc1jy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Axolot" instance=ExtResource("1_feopc")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, 10)
+sprite_frames = SubResource("SpriteFrames_spxra")
+frame_progress = 0.936938
+
+[node name="Sprite2D" parent="." index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, 13)
+
+[node name="HurtBox" parent="." index="3"]
+position = Vector2(0, 15)
+
+[node name="CollisionShape2D2" parent="HurtBox" index="1"]
+position = Vector2(0, -4)
+
+[node name="Stats" parent="." index="4"]
+totalHealth = 150
+attackDmg = 15
+exp_value = 40
+currentHealth = 150
+
+[node name="EnemyDetectionZone" parent="." index="5"]
+position = Vector2(0, 14)
+
+[node name="HitBox" parent="." index="6"]
+position = Vector2(0, 12)
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, -2)
+
+[node name="SoftCollision" parent="." index="7"]
+position = Vector2(0, 15)
+
+[editable path="EnemyDetectionZone"]
+[editable path="HitBox"]
+[editable path="SoftCollision"]

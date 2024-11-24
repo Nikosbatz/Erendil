@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkg23lj6wwhoi"]
+
+[ext_resource type="PackedScene" uid="uid://dvun23gssaj71" path="res://Scenes/collectables/collectable.tscn" id="1_sbh5u"]
+[ext_resource type="Texture2D" uid="uid://b2byjmmgb8hng" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Items/Potion/LifePot.png" id="2_7a2hs"]
+[ext_resource type="Script" path="res://Scenes/collectables/collectable.gd" id="2_8tk4q"]
+[ext_resource type="Resource" uid="uid://dpgop7kljkhl5" path="res://Scenes/inventory/items/HealthPot.tres" id="3_flvo1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ectu"]
+resource_local_to_scene = true
+size = Vector2(10, 12)
+
+[node name="HealthPot" instance=ExtResource("1_sbh5u")]
+collision_layer = 128
+collision_mask = 16
+script = ExtResource("2_8tk4q")
+item_resource = ExtResource("3_flvo1")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_4ectu")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_7a2hs")

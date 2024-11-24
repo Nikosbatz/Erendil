@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://dq7cpl1yubdem"]
+
+[ext_resource type="PackedScene" uid="uid://55p424tg2y50" path="res://Scenes/bat.tscn" id="1_tducr"]
+[ext_resource type="Texture2D" uid="uid://dfflu0so5lceb" path="res://Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Actor/Monsters/Mole/Mole.png" id="2_3u2e6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cmgk"]
+atlas = ExtResource("2_3u2e6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_754dr"]
+atlas = ExtResource("2_3u2e6")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygxh0"]
+atlas = ExtResource("2_3u2e6")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_070nt"]
+atlas = ExtResource("2_3u2e6")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2p5gb"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cmgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_754dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygxh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_070nt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Mole" instance=ExtResource("1_tducr")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_2p5gb")
+frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(-1, 14)
+
+[node name="Stats" parent="." index="4"]
+totalHealth = 180
+attackDmg = 25
+exp_value = 45
+currentHealth = 180
+
+[editable path="EnemyDetectionZone"]
+[editable path="HitBox"]
+[editable path="SoftCollision"]
